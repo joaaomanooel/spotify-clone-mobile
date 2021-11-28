@@ -37,11 +37,11 @@ export default ({ album: { cover }, y }: CoverProps) => {
 
   return (
     <Container style={animatedScale}>
+      <Blur style={animatedOpacity} />
       <Image
         style={{ ...StyleSheet.absoluteFillObject, width: undefined, height: undefined }}
         source={cover}
       />
-      <Blur style={animatedOpacity} />
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
 
 export const Container = styled(Animated.View)`
-  background-color: ${colors.black.darkest()};
+  background-color: ${colors.black.darkest};
   padding-top: ${layout.statusBarHeight}px;
   height: ${layout.MIN_HEADER_HEIGHT}px;
   position: absolute;

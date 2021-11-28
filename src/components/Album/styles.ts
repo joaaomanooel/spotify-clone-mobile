@@ -4,7 +4,7 @@ import { colors, layout } from '@/constants';
 import { BUTTON_HEIGHT } from '../ShufflePlay/styles';
 
 export const Container = styled.View`
-  background-color: ${colors.black.darkest()};
+  background-color: ${colors.black.darkest};
   flex: 1;
 `;
 

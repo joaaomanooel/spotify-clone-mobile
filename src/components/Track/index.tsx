@@ -3,7 +3,7 @@ import { Feather as Icon } from '@expo/vector-icons';
 
 import { Track } from '@/interfaces';
 import { Artist, Cell, Index, Name, Row } from './styles';
-import { layout } from '@/constants';
+import { colors, layout } from '@/constants';
 
 interface TrackProps {
   track: Track;
@@ -21,7 +21,7 @@ export default ({ track, artist, index }: TrackProps) => (
       <Artist>{track.artist || artist}</Artist>
     </Cell>
     <Cell>
-      <Icon name="more-horizontal" color="#b2b3b4" size={layout.scale() * 24} />
+      <Icon name="more-horizontal" color={colors.gray.base} size={layout.scale() * 24} />
     </Cell>
   </Row>
 );

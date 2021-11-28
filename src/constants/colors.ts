@@ -1,9 +1,6 @@
 export default {
-  white: {
-    lightest: (op = 1) => `rgba(255, 255, 255, ${op})`,
-  },
-
-  black: {
-    darkest: (op = 1) => `rgba(255, 255, 255, ${op})`,
-  },
+  white: { lightest: '#ffffff' },
+  black: { darkest: '#000000' },
+  gray: { base: '#b2b3b4' },
+  green: { light: '#1ed760' },
 };

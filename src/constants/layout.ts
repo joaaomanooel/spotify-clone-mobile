@@ -16,7 +16,8 @@ const getScale = (smallScreenScaling = 0.95, limitScale = true) => {
 };
 
 const shadow = {
-  shadowColor: colors.black.darkest(),
+  // shadowColor: colors.black.darkest(),
+  shadowColor: colors.black.darkest,
   shadowOffset: { width: 0, height: 0 },
   shadowOpacity: 0.08,
   shadowRadius: 8,
@@ -24,7 +25,8 @@ const shadow = {
 };
 
 const highShadow = {
-  shadowColor: colors.black.darkest(),
+  // shadowColor: colors.black.darkest(),
+  shadowColor: colors.black.darkest,
   shadowOffset: { width: 0, height: 7 },
   shadowOpacity: 0.4,
   shadowRadius: 8,

@@ -23,12 +23,13 @@ export const ArtistContainer = styled.View`
 
 export const ArtistText = styled(Animated.Text)`
   font-size: ${layout.scale() * 48}px;
-  color: ${colors.white.lightest()};
+  color: ${colors.white.lightest};
   text-align: center;
   font-weight: bold;
 `;
 
 export const TracksContainer = styled.View`
-  background-color: ${colors.black.darkest()};
+  background-color: ${colors.black.darkest};
   padding-top: ${layout.screenPadding}px;
+  padding-bottom: ${layout.screenPadding + layout.bottomSpace}px;
 `;

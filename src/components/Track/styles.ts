@@ -5,18 +5,18 @@ export const Container = styled.View``;
 
 export const Row = styled.View`
   flex-direction: row;
-  background-color: black;
+  background-color: ${colors.black.darkest};
 `;
 export const Cell = styled.View`
   justify-content: center;
   padding: ${layout.scale() * 14}px;
 `;
 export const Index = styled.Text`
-  color: #b2b3b4;
+  color: ${colors.gray.base};
 `;
 export const Artist = styled.Text`
-  color: #b2b3b4;
+  color: ${colors.gray.base};
 `;
 export const Name = styled.Text`
-  color: ${colors.white.lightest()};
+  color: ${colors.white.lightest};
 `;
