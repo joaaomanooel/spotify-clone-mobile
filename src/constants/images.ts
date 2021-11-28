@@ -1,4 +1,4 @@
 export default {
-  artist: require('@/assets/Jan-Blomqvist.jpg'),
-  album: require('@/assets/Jan-Blomqvist-Remote-Control.jpg'),
+  artist: require('@/assets/Emicida.png'),
+  album: require('@/assets/AmarElo.png'),
 };

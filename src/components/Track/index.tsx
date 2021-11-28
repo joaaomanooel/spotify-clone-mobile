@@ -17,8 +17,12 @@ export default ({ track, artist, index }: TrackProps) => (
       <Index>{index}</Index>
     </Cell>
     <Cell style={{ flex: 1 }}>
-      <Name>{track.name}</Name>
-      <Artist>{track.artist || artist}</Artist>
+      <Name numberOfLines={1} ellipsizeMode="tail">
+        {track.name}
+      </Name>
+      <Artist numberOfLines={1} ellipsizeMode="tail">
+        {track.artist || artist}
+      </Artist>
     </Cell>
     <Cell>
       <Icon name="more-horizontal" color={colors.gray.base} size={layout.scale() * 24} />
