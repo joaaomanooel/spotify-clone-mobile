@@ -14,7 +14,7 @@ export default () => {
   return (
     <>
       <StatusBar
-        barStyle="dark-content"
+        barStyle="light-content"
         animated
         translucent
         backgroundColor="transparent"

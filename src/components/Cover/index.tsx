@@ -6,7 +6,12 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import { Album, HEADER_DELTA, MAX_HEADER_HEIGHT } from './Model';
+
+import { Album } from '@/interfaces';
+
+import { layout } from '@/constants';
+import { Blur, Container } from './styles';
+const { HEADER_DELTA, MAX_HEADER_HEIGHT } = layout;
 
 interface CoverProps {
   album: Album;
@@ -31,23 +36,12 @@ export default ({ album: { cover }, y }: CoverProps) => {
   }, [y]);
 
   return (
-    <Animated.View style={[styles.container, animatedScale]}>
-      <Image style={styles.image} source={cover} />
-      <Animated.View
-        style={[{ ...StyleSheet.absoluteFillObject, backgroundColor: 'black' }, animatedOpacity]}
+    <Container style={animatedScale}>
+      <Image
+        style={{ ...StyleSheet.absoluteFillObject, width: undefined, height: undefined }}
+        source={cover}
       />
-    </Animated.View>
+      <Blur style={animatedOpacity} />
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    height: MAX_HEADER_HEIGHT,
-  },
-  image: {
-    ...StyleSheet.absoluteFillObject,
-    width: undefined,
-    height: undefined,
-  },
-});

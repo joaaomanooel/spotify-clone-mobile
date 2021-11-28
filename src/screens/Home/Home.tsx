@@ -1,15 +1,14 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 
 import Album from '@/components/Album';
-import { Album as AlbumModel } from '@/components/Model';
+import { Album as AlbumModel } from '@/interfaces';
+import { images } from '@/constants';
 
 const album: AlbumModel = {
   name: 'Remote Control',
   artist: 'Jan Blomqvist',
   release: 2016,
-  // eslint-disable-next-line global-require
-  cover: require('@/assets/Jan-Blomqvist.jpg'),
+  cover: images.artist,
   tracks: [
     { name: 'Stories Over' },
     { name: 'More', artist: 'Jan Blomqvist, Elena Pitoulis' },
@@ -27,10 +26,5 @@ const album: AlbumModel = {
 };
 
 export default () => {
-  return (
-    <>
-      <StatusBar barStyle="light-content" />
-      <Album {...{ album }} />
-    </>
-  );
+  return <Album {...{ album }} />;
 };

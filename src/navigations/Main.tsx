@@ -5,13 +5,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './Root';
 
 import Home from '@/screens/Home';
+import { colors } from '@/constants';
 
 const Stack = createStackNavigator();
 
 export default () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        screenOptions={{
+          cardStyle: { backgroundColor: colors.black.darkest() },
+          headerShown: false,
+        }}>
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>

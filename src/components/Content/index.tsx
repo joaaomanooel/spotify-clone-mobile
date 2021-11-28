@@ -1,15 +1,26 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
-import { Album, MAX_HEADER_HEIGHT } from './Model';
-import Track from './Track';
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
+
+import { Album } from '@/interfaces';
+import { layout } from '@/constants';
+
+import Track from '../Track';
+import {
+  ArtistContainer,
+  ArtistText,
+  GradientContainer,
+  HeaderContainer,
+  TracksContainer,
+} from './styles';
+
+const { MAX_HEADER_HEIGHT } = layout;
 
 interface ContentProps {
   album: Album;
@@ -37,59 +48,28 @@ export default ({ album: { artist, tracks }, y, scrollHandler }: ContentProps) =
 
   return (
     <Animated.ScrollView
+      style={{ flex: 1 }}
       onScroll={scrollHandler}
-      style={styles.container}
       showsVerticalScrollIndicator={false}
       scrollEventThrottle={1}>
-      <View style={styles.header}>
-        <Animated.View style={[styles.gradient, animatedHeight]}>
+      <HeaderContainer>
+        <GradientContainer style={animatedHeight}>
           <LinearGradient
             style={StyleSheet.absoluteFill}
             start={[0, 0.3]}
             end={[0, 1]}
             colors={['transparent', 'rgba(0, 0, 0, 0.2)', 'black']}
           />
-        </Animated.View>
-        <View style={styles.artistContainer}>
-          <Animated.Text style={[styles.artist, animatedOpacity]}>{artist}</Animated.Text>
-        </View>
-      </View>
-      <View style={styles.tracks}>
+        </GradientContainer>
+        <ArtistContainer>
+          <ArtistText style={animatedOpacity}>{artist}</ArtistText>
+        </ArtistContainer>
+      </HeaderContainer>
+      <TracksContainer>
         {tracks.map((track, key) => (
           <Track key={key} index={key + 1} {...{ track, artist }} />
         ))}
-      </View>
+      </TracksContainer>
     </Animated.ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    height: MAX_HEADER_HEIGHT,
-  },
-  gradient: {
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    right: 0,
-    alignItems: 'center',
-  },
-  artistContainer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  artist: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 48,
-    fontWeight: 'bold',
-  },
-  tracks: {
-    paddingTop: 32,
-    backgroundColor: 'black',
-  },
-});

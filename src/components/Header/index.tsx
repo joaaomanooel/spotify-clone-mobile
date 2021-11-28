@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
-import { MIN_HEADER_HEIGHT, HEADER_DELTA } from './Model';
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
+
+import { layout } from '@/constants';
+import { Container, Title } from './styles';
+const { HEADER_DELTA } = layout;
 
 interface HeaderProps {
   artist: string;
@@ -32,26 +33,8 @@ export default ({ artist, y }: HeaderProps) => {
   }, [y]);
 
   return (
-    <Animated.View style={[styles.container, containerOpacity]}>
-      <Animated.Text style={[styles.title, textOpacity]}>{artist}</Animated.Text>
-    </Animated.View>
+    <Container style={containerOpacity}>
+      <Title style={textOpacity}>{artist}</Title>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: MIN_HEADER_HEIGHT,
-    backgroundColor: 'black',
-    paddingTop: Constants.statusBarHeight,
-  },
-  title: {
-    color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: '400',
-  },
-});

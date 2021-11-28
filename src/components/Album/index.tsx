@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
-
-import { Album, HEADER_DELTA, MAX_HEADER_HEIGHT } from './Model';
-import Header from './Header';
-import Content from './Content';
-import Cover from './Cover';
-import ShufflePlay, { BUTTON_HEIGHT } from './ShufflePlay';
-import Animated, {
+import {
   useAnimatedScrollHandler,
   useSharedValue,
   useAnimatedStyle,
   useDerivedValue,
 } from 'react-native-reanimated';
+
+import { Album } from '@/interfaces';
+import { layout } from '@/constants';
+
+import Header from '../Header';
+import Content from '../Content';
+import Cover from '../Cover';
+import ShufflePlay from '../ShufflePlay';
+
+import { ButtonContainer, Container } from './styles';
+
+const { HEADER_DELTA } = layout;
 
 interface AlbumProps {
   album: Album;
@@ -39,29 +44,13 @@ export default ({ album }: AlbumProps) => {
   });
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Cover {...{ y, album }} />
       <Content {...{ y, scrollHandler, album }} />
       <Header {...{ y, artist }} />
-      <Animated.View
-        style={[
-          animatedButtonContainer,
-          {
-            position: 'absolute',
-            top: MAX_HEADER_HEIGHT - BUTTON_HEIGHT / 2,
-            left: 0,
-            right: 0,
-          },
-        ]}>
+      <ButtonContainer style={animatedButtonContainer}>
         <ShufflePlay />
-      </Animated.View>
-    </View>
+      </ButtonContainer>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-});

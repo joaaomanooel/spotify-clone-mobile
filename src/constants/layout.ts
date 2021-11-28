@@ -32,7 +32,13 @@ const highShadow = {
   elevation: 15,
 };
 
-const screenPadding = getScale() * 28;
+const screenPadding = getScale() * 32;
+
+const φ = (1 + Math.sqrt(5)) / 2;
+
+const MIN_HEADER_HEIGHT = 64 + getStatusBarHeight();
+const MAX_HEADER_HEIGHT = height * (1 - 1 / φ);
+const HEADER_DELTA = MAX_HEADER_HEIGHT - MIN_HEADER_HEIGHT;
 
 export default {
   screenWidth: width,
@@ -46,4 +52,8 @@ export default {
   screenPadding,
   tabBarHeight: getBottomSpace() + getScale() * 64,
   shadow,
+
+  MIN_HEADER_HEIGHT,
+  MAX_HEADER_HEIGHT,
+  HEADER_DELTA,
 };
