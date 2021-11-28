@@ -36,7 +36,7 @@ const screenPadding = getScale() * 32;
 
 const φ = (1 + Math.sqrt(5)) / 2;
 
-const MIN_HEADER_HEIGHT = 64 + getStatusBarHeight();
+const MIN_HEADER_HEIGHT = getScale() * 64 + getStatusBarHeight();
 const MAX_HEADER_HEIGHT = height * (1 - 1 / φ);
 const HEADER_DELTA = MAX_HEADER_HEIGHT - MIN_HEADER_HEIGHT;
 
